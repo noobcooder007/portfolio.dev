@@ -1,0 +1,29 @@
+---
+import ExperienceItem from './ExperienceItem.astro';
+const EXPERIENCE = [
+  {
+    title: 'Capgemini Engineering - Software Engineer.',
+    description:
+      'Me desempeño como Software Engineer desarrollando aplicaciones tanto en frontend como en backend, así también, diseño de bases de datos, testing y migración de los aplicativos de PCF a GCP (Google Cloud Platform). Esto para el sector automotriz, prestando servicios a la empresa Ford México.',
+    date: 'Julio 2021 - Actualmente',
+  },
+  {
+    title: 'Bonsai Software - Software Developer.',
+    description:
+      'Egresado comencé un pequeño emprendimiento llamado Bonsai Software en el cual me desempeñe como Desarrollador de Software y Consultor de Software ofreciendo software hecho a la medida, así como páginas web y aplicaciones móviles.',
+    date: 'Septiembre 2020 - Junio 2021',
+  },
+  {
+    title: 'Lobo Software - Desarrolador Full-Stack.',
+    description:
+      'Me desempeñé como programador full-stack en el desarrollo de un sistema ERP (SIAL) así como en el desarrollo de una librería hecha en Java llamada SIAL Util, además de refacotizar código obsoleto mejorando el rendimiento del sistema ERP antes mencionado.',
+    date: 'Julio 2019 - Abril 2010',
+  },
+];
+---
+
+<ol class='relative border-s border-gray-200 dark:border-gray-700 ml-3.5'>
+  <li class='mb-10 ms-6'>
+    {EXPERIENCE.map((e) => <ExperienceItem {...e} />)}
+  </li>
+</ol>
