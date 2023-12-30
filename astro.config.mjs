@@ -6,7 +6,10 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   integrations: [tailwind()],
   site: 'https://noobcooder007.github.io',
-  base: '/docs/',
+  base: '/portfolio.dev/',
+  output: 'static',
   outDir: "./docs",
-  trailingSlash: 'never'
+  build: {
+    assets: 'astro'
+  }
 });
