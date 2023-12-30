@@ -7,5 +7,7 @@ export default defineConfig({
   integrations: [tailwind()],
   site: 'https://noobcooder007.github.io',
   base: '/portfolio.dev',
+  root: '.docs',
   trailingSlash: 'always',
+  outDir: "./docs",
 });
