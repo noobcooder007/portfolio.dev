@@ -1,5 +1,6 @@
 ---
 import AstroIcon from './icons/AstroJS.astro';
+import AndroidIcon from './icons/Android.astro';
 import TailwindIcon from './icons/TailwindCSS.astro';
 import TypeScriptIcon from './icons/TypeScript.astro';
 const TAGS = {
@@ -18,6 +19,11 @@ const TAGS = {
     class: 'text-[#4476c0]',
     icon: TypeScriptIcon,
   },
+  ANDROID: {
+    name: 'Android',
+    class: 'text-[#78C257]',
+    icon: AndroidIcon
+  }
 };
 
 const PROJECTS = [
@@ -26,23 +32,35 @@ const PROJECTS = [
     description:
       'Nuevo y renovado portfolio personal contruido con el framework de Astro estilizado con tailwind CSS y el poder de Typescript.',
     link: '#',
-    github: 'https://github.com/noobcooder007/xDxDJohanxDxD',
+    github: 'https://github.com/noobcooder007/portfolio.dev',
     image: './proyects/proyect1.webp',
     tags: [TAGS.ASTRO, TAGS.TAILWIND, TAGS.TYPESCRIPT],
+  },
+  {
+    title: 'Ice Bonsai',
+    description:
+      'Aplicación para llevar un registro de las ventas de helado contruido con el framework de Jetpack Compose y el poder de Kotlin.',
+    link: '#',
+    github: 'https://github.com/noobcooder007/IceBonsai',
+    image: './proyects/proyect2.webp',
+    tags: [TAGS.ANDROID],
   },
 ];
 ---
 
 {
-  PROJECTS.map(({ image, title, description, tags }) => (
-    <article>
+  PROJECTS.map(({ image, title, description, github, tags }) => (
+    <article class="mb-8">
       <h3 class='text-2xl font-semibold text-yellow-200 mb-2'>{title}</h3>
       <p class='text-lg mb-4 text-pretty'>{description}</p>
-      <ul class="flex gap-x-2 flex-row pb-4">
+      <p class="mb-2"><a target="_blank" href={github}>Repositorio de GitHub</a></p>
+      <ul class='flex gap-x-2 flex-row pb-4'>
         {tags.map((tag) => (
           <li>
-            <span class={`flex gap-x-2 rounded-full text-xs ${tag.class} bg-white/10 py-1 px-2`}>
-              <tag.icon class="size-4" />
+            <span
+              class={`flex gap-x-2 rounded-full text-xs ${tag.class} bg-white/10 py-1 px-2`}
+            >
+              <tag.icon class='size-4' />
               {tag.name}
             </span>
           </li>
