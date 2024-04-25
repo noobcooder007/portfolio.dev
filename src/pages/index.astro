@@ -1,29 +1,32 @@
 ---
-import Badge from '../components/Badge.astro';
-import BriefcaseIcon from '../components/icons/Briefcase.astro';
-import CodeIcon from '../components/icons/Code.astro';
-import Experience from '../components/Experience.astro';
-import GitHubIcon from '../components/icons/GitHub.astro';
-import MailIcon from '../components/icons/Mail.astro';
 import Layout from '../layouts/Layout.astro';
-import LinkedInIcon from '../components/icons/LindkedIn.astro';
+import AboutMe from '../components/AboutMe.astro';
+import Badge from '../components/Badge.astro';
+import Contact from '../components/Contact.astro';
+import Experience from '../components/Experience.astro';
+import Profile from '../components/Profile.astro';
 import Proyects from '../components/Proyects.astro';
 import SectionContainer from '../components/SectionContainer.astro';
-import SocialPill from '../components/SocialPill.astro';
+import BriefcaseIcon from '../components/icons/Briefcase.astro';
+import CodeIcon from '../components/icons/Code.astro';
+import ContactIcon from '../components/icons/ContactIcon.astro';
+import PersonIcon from '../components/icons/PersonIcon.astro';
 ---
 
 <Layout
-  title='Portfolio de noobcoder007 - Desarrollador y Programador Web y Móvil.'
+  title='Portfolio de noobcoder007 - Desarrollador Web y Móvil.'
   description='Contrata a noobcoder007 para crear aplicaciones únicas que se ven bien y funcionan mejor'
 >
-  <main class="px-4">
-    <SectionContainer class="py-44 pb-32">
+  <main class='px-4'>
+    <SectionContainer class='py-44 pb-8'>
       <img
         class='rounded-full size-12 mb-4'
         src='https://avatars.githubusercontent.com/u/40574209?v=4'
-        alt='noobcoder007 photo'
+        alt='noobcoder007 avatar'
       />
-      <h1 class='text-white text-3xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10'>
+      <h1
+        class='text-white text-3xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10'
+      >
         Hey, soy noobcoder007 <a
           href='https://www.linkedin.com/in/juan-manuel-tejeda-torres-946b46180/'
           target='_blank'
@@ -31,45 +34,35 @@ import SocialPill from '../components/SocialPill.astro';
           class='flex justify-center items-center'><Badge>Contáctame</Badge></a
         >
       </h1>
-      <h2 class='lg:text-xl text-2xl text-opacity-80 text-wrap max-w-[700px]'>
-        <span>+3 años de experiencia.</span>
-        <span class='text-yellow-200/90'
-          >Desarrollador Web FullStack y Móvil.</span
-        >
-        <span class='text-red-200/90'> De Zamora, Michoacan, México 🇲🇽.</span>
-        <span class='opacity-80'
-          >Especializado en crear aplicaciones únicas que funcionan bien y se
-          ven mejor.</span
-        >
-      </h2>
-      <nav class='flex gap-4 mt-8 flex-wrap'>
-        <SocialPill
-          href='https://www.linkedin.com/in/juan-manuel-tejeda-torres-946b46180/'
-        >
-          <LinkedInIcon class='size-4 md:size-6' />
-           LinkedIn
-        </SocialPill>
-        <SocialPill href='https://github.com/noobcooder007'>
-          <GitHubIcon class='size-4 md:size-6' />
-           GitHub
-        </SocialPill>
-        <SocialPill href='mailto:tejeda.torres.1a@gmail.com'>
-          <MailIcon class='size-4 md:size-6' />
-           tejeda.torres.1a@gmail.com
-        </SocialPill>
-      </nav>
+      <Profile />
     </SectionContainer>
-    <SectionContainer id="experiencia" class="py-44 pb-32">
-      <h2 class="text-3xl font-semibold mb-10 flex gap-x-2 items-center">
-        <BriefcaseIcon class="size-7" />
-        Experiencia laboral</h2>
+    <SectionContainer id='experiencia' class='py-16 pb-8'>
+      <h2 class='text-3xl font-semibold mb-10 flex gap-x-2 items-center'>
+        <BriefcaseIcon class='size-7' />
+        Experiencia laboral
+      </h2>
       <Experience />
     </SectionContainer>
-    <SectionContainer id="proyectos">
-      <h2 class="text-3xl font-semibold mb-10 flex gap-x-2 items-center">
-        <CodeIcon class="size-7" />
-        Proyectos</h2>
+    <SectionContainer id='proyectos' class='py-16 pb-8'>
+      <h2 class='text-3xl font-semibold mb-10 flex gap-x-2 items-center'>
+        <CodeIcon class='size-7' />
+        Proyectos
+      </h2>
       <Proyects />
+    </SectionContainer>
+    <SectionContainer id='sobre-mi' class='py-16 pb-8'>
+      <h2 class='text-3xl font-semibold mb-10 flex gap-x-2 items-center'>
+        <PersonIcon class='size-7' />
+        Sobre mi
+      </h2>
+      <AboutMe />
+    </SectionContainer>
+    <SectionContainer id="contacto" class="py-16 pb-44">
+      <h2 class='text-3xl font-semibold mb-10 flex gap-x-2 items-center'>
+        <ContactIcon class='size-7' />
+        Contacto
+      </h2>
+      <Contact />
     </SectionContainer>
   </main>
 </Layout>
