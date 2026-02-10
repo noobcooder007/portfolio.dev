@@ -1,32 +1,30 @@
 ---
 import SocialPill from './SocialPill.astro';
-import GitHubIcon from './icons/GitHub.astro';
+import GitHubIcon from './icons/GitHubIcon.astro';
 import LinkedInIcon from './icons/LindkedIn.astro';
 import MailIcon from './icons/Mail.astro';
 ---
-
-<h2 class='lg:text-xl text-2xl text-opacity-80 text-wrap max-w-[700px]'>
-  <span>+4 años de experiencia.</span>
-  <span class='text-yellow-200/90'>Desarrollador Web FullStack y Móvil.</span>
-  <span class='text-red-200/90'> Soy de Zamora, Michoacan, México 🇲🇽.</span>
-  <span class="text-white text-opacity-80"
-    >Especializado en crear aplicaciones únicas que funcionan bien y se ven
-    mejor.</span
+<section class="bg-[#0f0f0f] shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] shadow-yellow-300 border border-yellow-100 rounded-3xl p-8">
+  <span class="text-slate-300 lg:text-2xl text-xl">+6 años de experiencia.</span>
+  <span class='text-yellow-300 lg:text-2xl text-xl'>Apasionado por el desarrollador de software.</span>
+  <span class='text-rose-400 lg:text-2xl text-xl'> Soy de Zamora, Michoacan, México 🇲🇽.</span>
+  <span class='text-slate-300 lg:text-2xl text-xl'
+    >Especializado en crear aplicaciones únicas que funcionan bien y se ven mejor.</span
   >
-</h2>
-<nav class='flex gap-4 mt-8 flex-wrap'>
-  <SocialPill
-    href='https://www.linkedin.com/in/juan-manuel-tejeda-torres-946b46180/'
-  >
-    <LinkedInIcon class='size-4 md:size-6' />
-    LinkedIn
-  </SocialPill>
-  <SocialPill href='https://github.com/noobcooder007'>
-    <GitHubIcon class='size-4 md:size-6' />
-    GitHub
-  </SocialPill>
-  <SocialPill href='mailto:tejeda.torres.1a@gmail.com'>
-    <MailIcon class='size-4 md:size-6' />
-    tejeda.torres.1a@gmail.com
-  </SocialPill>
-</nav>
+  <nav class='flex gap-4 mt-8 flex-wrap'>
+    <SocialPill
+      href='https://www.linkedin.com/in/juan-manuel-tejeda-torres-946b46180/'
+    >
+      <LinkedInIcon class='size-4 md:size-6' />
+      LinkedIn
+    </SocialPill>
+    <SocialPill href='https://github.com/noobcooder007'>
+      <GitHubIcon class='size-4 md:size-6' />
+      GitHub
+    </SocialPill>
+    <SocialPill href='mailto:tejeda.torres.1a@gmail.com'>
+      <MailIcon class='size-4 md:size-6' />
+      tejeda.torres.1a@gmail.com
+    </SocialPill>
+  </nav>
+</section>

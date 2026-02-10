@@ -1,0 +1,121 @@
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Un Regalo para Ti 💖</title>
+  </head>
+  <script is:inline>
+    const hoy = new Date();
+    const esSanValentin = hoy.getMonth() === 1 && hoy.getDate() === 14;
+
+    if (!esSanValentin) {
+        window.location.href = '/portfolio.dev/';
+    }
+  </script>
+  <body class="bg-rose-100 dark:bg-slate-950 min-h-screen flex flex-col items-center justify-center overflow-hidden font-sans">
+    
+    <div id="heart-container" class="absolute inset-0 pointer-events-none z-0"></div>
+
+    <div id="envelope-wrapper" class="relative w-64 h-44 cursor-pointer group scale-125 transition-transform duration-500 z-10">
+      <div class="absolute inset-0 bg-rose-400 dark:bg-rose-600 rounded-lg shadow-xl"></div>
+
+      <div id="letter" class="absolute left-1/2 -translate-x-1/2 top-2 w-[90%] h-[80%] bg-white dark:bg-slate-50 p-4 shadow-inner transition-all duration-700 ease-in-out z-0">
+        <div class="border-2 border-dashed border-rose-200 h-full flex flex-col items-center justify-center text-center">
+          <p class="text-rose-600 font-serif italic text-xs">Eres la persona</p>
+          <p class="text-rose-600 font-serif italic text-xs">más especial</p>
+          <span class="text-xl mt-1 animate-pulse">✨</span>
+        </div>
+      </div>
+
+      <div class="absolute inset-0 bg-rose-300 dark:bg-rose-500 z-10" style="clip-path: polygon(0% 0%, 50% 50%, 100% 0%, 100% 100%, 0% 100%);"></div>
+      <div class="absolute inset-0 bg-rose-200 dark:bg-rose-400 z-10" style="clip-path: polygon(0% 100%, 50% 40%, 100% 100%);"></div>
+
+      <div id="flap" class="absolute inset-0 bg-rose-500 dark:bg-rose-700 origin-top transition-transform duration-500 z-20" 
+           style="clip-path: polygon(0% 0%, 50% 50%, 100% 0%);">
+      </div>
+    </div>
+
+    <p id="instruction" class="mt-24 text-rose-500 dark:text-rose-300 font-medium animate-bounce z-10">
+      Haz clic para abrir 💌
+    </p>
+
+    <style is:global>
+      @keyframes fall {
+        0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+      }
+      .heart {
+        position: absolute;
+        top: -10%;
+        animation: fall linear forwards;
+      }
+    </style>
+
+    <script>
+      const wrapper = document.getElementById('envelope-wrapper');
+      const flap = document.getElementById('flap');
+      const letter = document.getElementById('letter');
+      const instruction = document.getElementById('instruction');
+      const heartContainer = document.getElementById('heart-container');
+      
+      let isOpen = false;
+      let heartInterval = null;
+
+      function createHeart() {
+        const heart = document.createElement('div');
+        const size = Math.floor(Math.random() * 20) + 15;
+        const duration = Math.random() * 3 + 3;
+        
+        heart.className = 'heart';
+        heart.innerText = ['💖', '❤️', '💕', '✨'][Math.floor(Math.random() * 4)];
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.fontSize = size + 'px';
+        heart.style.animationDuration = duration + 's';
+        heart.style.opacity = (Math.random() * 0.6 + 0.4).toString();
+
+        heartContainer.appendChild(heart);
+        setTimeout(() => heart.remove(), duration * 1000);
+      }
+
+      function burstHearts(count) {
+        for (let i = 0; i < count; i++) {
+          setTimeout(createHeart, i * 50); // Ráfaga rápida
+        }
+      }
+
+      wrapper.addEventListener('click', () => {
+        if (!isOpen) {
+          // ABRIR
+          flap.style.transform = 'rotateX(180deg)';
+          
+          setTimeout(() => {
+            flap.style.zIndex = '0';
+            letter.style.transform = 'translate(-50%, -100px)';
+            letter.style.zIndex = '5';
+            instruction.innerText = "¡Feliz San Valentin! ❤️";
+            instruction.classList.remove('animate-bounce');
+            
+            // COMENZAR CORAZONES
+            burstHearts(15); // Explosión inicial
+            heartInterval = setInterval(createHeart, 400); // Lluvia constante
+          }, 250);
+          
+          isOpen = true;
+        } else {
+          // CERRAR
+          letter.style.transform = 'translate(-50%, 2px)';
+          clearInterval(heartInterval); // Detener la creación de nuevos corazones
+          
+          setTimeout(() => {
+            letter.style.zIndex = '0';
+            flap.style.zIndex = '20';
+            flap.style.transform = 'rotateX(0deg)';
+            instruction.innerText = "Haz clic para abrir 💌";
+            instruction.classList.add('animate-bounce');
+          }, 250);
+          
+          isOpen = false;
+        }
+      });
+    </script>
+  </body>
+</html>

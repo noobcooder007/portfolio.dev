@@ -3,12 +3,10 @@ import AstroIcon from './icons/AstroJS.astro';
 import AndroidIcon from './icons/Android.astro';
 import TailwindIcon from './icons/TailwindCSS.astro';
 import TypeScriptIcon from './icons/TypeScript.astro';
+import GitHubIcon from './icons/GitHubIcon.astro';
+
 const TAGS = {
-  ASTRO: {
-    name: 'Astro',
-    class: 'text-white',
-    icon: AstroIcon,
-  },
+  ASTRO: { name: 'Astro', class: 'text-white', icon: AstroIcon },
   TAILWIND: {
     name: 'Tailwind CSS',
     class: 'text-[#5eb3ea]',
@@ -19,11 +17,8 @@ const TAGS = {
     class: 'text-[#4476c0]',
     icon: TypeScriptIcon,
   },
-  ANDROID: {
-    name: 'Android',
-    class: 'text-[#78C257]',
-    icon: AndroidIcon
-  }
+  ANDROID: { name: 'Android', class: 'text-[#78C257]', icon: AndroidIcon },
+  GITHUB: { name: 'GitHub', class: 'text-white', icon: GitHubIcon },
 };
 
 const PROJECTS = [
@@ -48,29 +43,53 @@ const PROJECTS = [
 ];
 ---
 
-{
-  PROJECTS.map(({ image, title, description, github, tags }) => (
-    <article class="mb-8">
-      <h3 class='text-2xl font-semibold text-yellow-200 mb-2'>{title}</h3>
-      <p class='text-lg mb-4 text-pretty'>{description}</p>
-      <p class="mb-2"><a target="_blank" href={github}>Repositorio de GitHub</a></p>
-      <ul class='flex gap-x-2 flex-row pb-4'>
-        {tags.map((tag) => (
-          <li>
-            <span
-              class={`flex gap-x-2 rounded-full text-xs ${tag.class} bg-white/10 py-1 px-2`}
+<div
+  class='grid grid-cols-1 md:grid-cols-[repeat(auto-fill,minmax(340px,1fr))] gap-12 px-2'
+>
+  {
+    PROJECTS.map(({ image, title, description, github, tags }) => (
+      <article class='group flex flex-col h-full bg-[#1a1a1a] border-2 border-white/10 rounded-none overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:-translate-x-1 shadow-[8px_8px_0px_0px_rgba(255,255,255,0.05)] hover:shadow-[12px_12px_0px_0px_rgba(253,224,71)]'>
+        {/* IMAGEN CORREGIDA: Eliminamos width fijo y añadimos w-full y object-cover */}
+        <div class='w-full h-48 overflow-hidden border-b border-white/10'>
+          <img
+            class='w-full h-full object-cover transition-transform duration-500 group-hover:scale-105'
+            src={image}
+            alt={`Captura de pantalla del proyecto ${title}`}
+          />
+        </div>
+
+        <div class='flex flex-col p-6 flex-grow'>
+          <h3 class='text-2xl font-bold text-rose-400 mb-2'>{title}</h3>
+
+          <ul class='flex flex-wrap gap-2 mb-4'>
+            {tags.map((tag) => (
+              <li>
+                <span
+                  class={`flex items-center rounded-full gap-2 text-xs ${tag.class} bg-slate-800/50 py-1 px-3 border border-white/5`}
+                >
+                  <tag.icon class='size-4' />
+                  {tag.name}
+                </span>
+              </li>
+            ))}
+          </ul>
+
+          <p class='text-slate-300 text-sm leading-relaxed mb-6 flex-grow'>
+            {description}
+          </p>
+
+          <footer class='mt-auto'>
+            <a
+              target='_blank'
+              href={github}
+              class='inline-flex items-center text-xs font-mono text-yellow-300 hover:text-white transition-colors gap-2'
             >
-              <tag.icon class='size-4' />
-              {tag.name}
-            </span>
-          </li>
-        ))}
-      </ul>
-      <img
-        class='rounded shadow-2xl shadow-white/10'
-        src={image}
-        alt='home page'
-      />
-    </article>
-  ))
-}
+              <span>Ver código fuente</span>
+              <GitHubIcon class='size-4' />
+            </a>
+          </footer>
+        </div>
+      </article>
+    ))
+  }
+</div>

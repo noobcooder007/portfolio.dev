@@ -17,8 +17,8 @@ import PersonIcon from '../components/icons/PersonIcon.astro';
   title='Portfolio de noobcoder007 - Desarrollador Web y Móvil.'
   description='Contrata a noobcoder007 para crear aplicaciones únicas que se ven bien y funcionan mejor'
 >
-  <main class='px-4'>
-    <SectionContainer class='py-16 pb-8'>
+  <main class='px-4 flex flex-col justify-evenly gap-y-24'>
+    <SectionContainer class='py-16'>
       <img
         class='rounded-full size-12 mb-4'
         src='https://avatars.githubusercontent.com/u/40574209?v=4'
@@ -27,42 +27,124 @@ import PersonIcon from '../components/icons/PersonIcon.astro';
       <h1
         class='text-white text-3xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10'
       >
-        Hey, soy noobcoder007 <a
+        Hey, soy noobcoder007
+        <a
           href='https://www.linkedin.com/in/juan-manuel-tejeda-torres-946b46180/'
           target='_blank'
           rel='noopener'
-          class='flex justify-center items-center'><Badge>Contáctame</Badge></a
+          class='flex justify-center items-center'
         >
+          <Badge>Contáctame</Badge>
+        </a>
       </h1>
       <Profile />
     </SectionContainer>
-    <SectionContainer id='experiencia' class='py-16 pb-8'>
-      <h2 class='text-3xl font-semibold mb-10 flex gap-x-2 items-center'>
+
+    <SectionContainer id='experiencia' class='section-reveal'>
+      <h2
+        class='text-white text-3xl font-semibold mb-10 flex gap-x-2 items-center'
+      >
         <BriefcaseIcon class='size-7' />
         Experiencia laboral
       </h2>
       <Experience />
     </SectionContainer>
-    <SectionContainer id='proyectos' class='py-16 pb-8'>
-      <h2 class='text-3xl font-semibold mb-10 flex gap-x-2 items-center'>
+
+    <SectionContainer id='proyectos' class='section-reveal max-w-6xl'>
+      <h2
+        class='text-white text-3xl font-semibold mb-10 flex gap-x-2 items-center'
+      >
         <CodeIcon class='size-7' />
         Proyectos
       </h2>
-      <Proyects />
+      <div class='pr-4 pb-4'><Proyects /></div>
     </SectionContainer>
-    <SectionContainer id='sobre-mi' class='py-16 pb-8'>
-      <h2 class='text-3xl font-semibold mb-10 flex gap-x-2 items-center'>
-        <PersonIcon class='size-7' />
-        Sobre mi
-      </h2>
-      <AboutMe />
+
+    <SectionContainer id='sobre-mi' class='section-reveal'>
+      <div
+        class='bg-[#0f0f0f] shadow-[10px_10px_0px_0px_rgba(253,224,71,1)] border-2 border-yellow-100/20 rounded-none p-8 transition-transform hover:translate-x-1 hover:translate-y-1 hover:shadow-none duration-300'
+      >
+        <h2
+          class='text-3xl text-slate-200 font-semibold mb-10 flex gap-x-2 items-center'
+        >
+          <PersonIcon class='size-7 text-yellow-300' />
+          Sobre mi
+        </h2>
+        <AboutMe />
+      </div>
     </SectionContainer>
-    <SectionContainer id="contacto" class="py-16 pb-16">
-      <h2 class='text-3xl font-semibold mb-10 flex gap-x-2 items-center'>
+
+    <SectionContainer id='contacto' class='section-reveal'>
+      <h2
+        class='text-white text-3xl font-semibold mb-10 flex gap-x-2 items-center'
+      >
         <ContactIcon class='size-7' />
         Contacto
       </h2>
       <Contact />
     </SectionContainer>
+
+    <div id='valentine-easter-egg' class='hidden fixed bottom-5 right-5 z-50'>
+      <a
+        href='/portfolio.dev/valentine'
+        class='bg-rose-500 text-white p-4 rounded-full shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] hover:bg-rose-600 transition-all hover:scale-110 flex items-center gap-2 animate-bounce font-bold border-2 border-white'
+      >
+        <span>Tienes un mensaje</span> 💌
+      </a>
+    </div>
   </main>
+
+  <style is:global>
+    .section-reveal {
+      opacity: 0;
+      transform: translateY(60px) scale(0.96);
+      transition: all 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+      filter: blur(4px);
+      will-change: transform, opacity;
+    }
+
+    .section-reveal.active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0px);
+    }
+  </style>
+
+  <script>
+    // Lógica para San Valentín y Revelado
+    function init() {
+      // 1. Check Date
+      const hoy = new Date();
+      // const esSanValentin = true; // Para probar
+      const esSanValentin = hoy.getMonth() === 1 && hoy.getDate() === 14;
+
+      if (esSanValentin) {
+        document
+          .getElementById('valentine-easter-egg')
+          ?.classList.remove('hidden');
+      }
+
+      // 2. Setup Intersection Observer para el revelado
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px',
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, observerOptions);
+
+      document
+        .querySelectorAll('.section-reveal')
+        .forEach((section) => observer.observe(section));
+    }
+
+    // Ejecutar al cargar y si usas ViewTransitions de Astro
+    init();
+    document.addEventListener('astro:page-load', init);
+  </script>
 </Layout>
