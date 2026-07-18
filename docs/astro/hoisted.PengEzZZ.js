@@ -1,4 +1,4 @@
-import"./Header.astro_astro_type_script_index_0_lang.DEXvXLVF.js";/**
+import"./Header.astro_astro_type_script_index_0_lang.VPMFa20n.js";/**
  * @license
  * Copyright 2010-2026 Three.js Authors
  * SPDX-License-Identifier: MIT
