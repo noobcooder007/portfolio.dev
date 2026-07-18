@@ -28,12 +28,15 @@ import PersonIcon from '../components/icons/PersonIcon.astro';
       <h1
         class='text-mint-900 dark:text-mint-50 text-3xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10'
       >
-        Hey, soy noobcoder007 <a
+        Hey, soy noobcoder007
+        <a
           href='https://www.linkedin.com/in/juan-manuel-tejeda-torres-946b46180/'
           target='_blank'
           rel='noopener'
-          class='flex justify-center items-center'><Badge>Contáctame</Badge></a
+          class='flex justify-center items-center'
         >
+          <Badge>Contáctame</Badge>
+        </a>
       </h1>
       <Profile />
     </SectionContainer>
@@ -49,7 +52,7 @@ import PersonIcon from '../components/icons/PersonIcon.astro';
         <CodeIcon class='size-7 text-mint-600 dark:text-mint-300' />
         Proyectos
       </h2>
-      <Proyects />
+      <div class='pr-4 pb-4'><Proyects /></div>
     </SectionContainer>
     <SectionContainer id='sobre-mi' class='py-6'>
       <h2 class='text-3xl font-semibold mb-10 flex gap-x-2 items-center text-mint-900 dark:text-mint-50'>
@@ -65,6 +68,15 @@ import PersonIcon from '../components/icons/PersonIcon.astro';
       </h2>
       <Contact />
     </SectionContainer>
+
+    <div id='valentine-easter-egg' class='hidden fixed bottom-5 right-5 z-50'>
+      <a
+        href='/portfolio.dev/valentine'
+        class='bg-rose-500 text-white p-4 rounded-full shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] hover:bg-rose-600 transition-all hover:scale-110 flex items-center gap-2 animate-bounce font-bold border-2 border-white'
+      >
+        <span>Tienes un mensaje</span> 💌
+      </a>
+    </div>
   </main>
   <ValentineEasterEgg />
 </Layout>
