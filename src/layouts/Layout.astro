@@ -5,9 +5,18 @@ import Footer from '../components/Footer.astro';
 interface Props {
 	title: string;
 	description: string;
+	chrome?: boolean;
+	image?: string;
 }
 
-const { title, description } = Astro.props;
+const {
+	title,
+	description,
+	chrome = true,
+	image = 'https://avatars.githubusercontent.com/u/40574209?v=4',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -16,30 +25,113 @@ const { title, description } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+		<link rel="canonical" href={canonicalURL} />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+
+		<script is:inline>
+			const theme = (() => {
+				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+					return localStorage.getItem('theme');
+				}
+				return window.matchMedia('(prefers-color-scheme: dark)').matches
+					? 'dark'
+					: 'light';
+			})();
+			document.documentElement.classList.toggle('dark', theme === 'dark');
+			document.documentElement.classList.add('js');
+		</script>
+
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:image" content={image} />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={image} />
 	</head>
-	<body>
-		<Header />
+	<body id="top">
+		<div class="glass-backdrop" aria-hidden="true">
+			<span class="blob blob-1"></span>
+			<span class="blob blob-2"></span>
+			<span class="blob blob-3"></span>
+		</div>
+		{chrome && <Header />}
 		<slot />
-		<Footer />
+		{chrome && <Footer />}
 	</body>
 </html>
 <style is:global>
 	:root {
-		color-scheme: light dark;
+		color-scheme: light;
 		scroll-behavior: smooth;
 	}
+	:root.dark {
+		color-scheme: dark;
+	}
 	body {
-		background: #050505;
+		background: #f2fbf6;
+		color: #16241d;
 		display: flex;
 		flex-direction: column;
 		min-height: 100vh;
 		margin: 0 auto;
+		position: relative;
+		overflow-x: hidden;
+		transition: background-color 0.3s ease, color 0.3s ease;
+	}
+	.dark body {
+		background: #0a120e;
+		color: #eef7f1;
 	}
 	html {
 		font-family: 'Onest variable', system-ui, sans-serif;
+	}
+	.glass-backdrop {
+		position: fixed;
+		inset: 0;
+		z-index: -1;
+		overflow: hidden;
+		pointer-events: none;
+	}
+	.blob {
+		position: absolute;
+		border-radius: 9999px;
+		filter: blur(110px);
+		opacity: 0.2;
+		transition: opacity 0.3s ease;
+	}
+	.dark .blob {
+		opacity: 0.35;
+	}
+	.blob-1 {
+		width: 32rem;
+		height: 32rem;
+		top: -10rem;
+		left: -8rem;
+		background: #7bcb9d;
+	}
+	.blob-2 {
+		width: 28rem;
+		height: 28rem;
+		top: 20rem;
+		right: -10rem;
+		background: #57b17f;
+	}
+	.blob-3 {
+		width: 26rem;
+		height: 26rem;
+		bottom: -8rem;
+		left: 30%;
+		background: #c2eed3;
+		opacity: 0.12;
+	}
+	.dark .blob-3 {
+		opacity: 0.2;
 	}
 	@media(prefers-reduced-motion: reduce) {
 		html {

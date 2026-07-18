@@ -7,6 +7,7 @@ import Experience from '../components/Experience.astro';
 import Profile from '../components/Profile.astro';
 import Proyects from '../components/Proyects.astro';
 import SectionContainer from '../components/SectionContainer.astro';
+import ValentineEasterEgg from '../components/ValentineEasterEgg.astro';
 import BriefcaseIcon from '../components/icons/Briefcase.astro';
 import CodeIcon from '../components/icons/Code.astro';
 import ContactIcon from '../components/icons/ContactIcon.astro';
@@ -18,14 +19,14 @@ import PersonIcon from '../components/icons/PersonIcon.astro';
   description='Contrata a noobcoder007 para crear aplicaciones únicas que se ven bien y funcionan mejor'
 >
   <main class='px-4'>
-    <SectionContainer class='py-16 pb-8'>
+    <SectionContainer class='py-6'>
       <img
-        class='rounded-full size-12 mb-4'
+        class='rounded-full size-12 mb-4 ring-2 ring-mint-600/40 dark:ring-mint-300/40'
         src='https://avatars.githubusercontent.com/u/40574209?v=4'
         alt='noobcoder007 avatar'
       />
       <h1
-        class='text-white text-3xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10'
+        class='text-mint-900 dark:text-mint-50 text-3xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10'
       >
         Hey, soy noobcoder007 <a
           href='https://www.linkedin.com/in/juan-manuel-tejeda-torres-946b46180/'
@@ -36,33 +37,34 @@ import PersonIcon from '../components/icons/PersonIcon.astro';
       </h1>
       <Profile />
     </SectionContainer>
-    <SectionContainer id='experiencia' class='py-16 pb-8'>
-      <h2 class='text-3xl font-semibold mb-10 flex gap-x-2 items-center'>
-        <BriefcaseIcon class='size-7' />
+    <SectionContainer id='experiencia' class='py-6'>
+      <h2 class='text-3xl font-semibold mb-10 flex gap-x-2 items-center text-mint-900 dark:text-mint-50'>
+        <BriefcaseIcon class='size-7 text-mint-600 dark:text-mint-300' />
         Experiencia laboral
       </h2>
       <Experience />
     </SectionContainer>
-    <SectionContainer id='proyectos' class='py-16 pb-8'>
-      <h2 class='text-3xl font-semibold mb-10 flex gap-x-2 items-center'>
-        <CodeIcon class='size-7' />
+    <SectionContainer id='proyectos' class='py-6'>
+      <h2 class='text-3xl font-semibold mb-10 flex gap-x-2 items-center text-mint-900 dark:text-mint-50'>
+        <CodeIcon class='size-7 text-mint-600 dark:text-mint-300' />
         Proyectos
       </h2>
       <Proyects />
     </SectionContainer>
-    <SectionContainer id='sobre-mi' class='py-16 pb-8'>
-      <h2 class='text-3xl font-semibold mb-10 flex gap-x-2 items-center'>
-        <PersonIcon class='size-7' />
+    <SectionContainer id='sobre-mi' class='py-6'>
+      <h2 class='text-3xl font-semibold mb-10 flex gap-x-2 items-center text-mint-900 dark:text-mint-50'>
+        <PersonIcon class='size-7 text-mint-600 dark:text-mint-300' />
         Sobre mi
       </h2>
       <AboutMe />
     </SectionContainer>
-    <SectionContainer id="contacto" class="py-16 pb-16">
-      <h2 class='text-3xl font-semibold mb-10 flex gap-x-2 items-center'>
-        <ContactIcon class='size-7' />
+    <SectionContainer id="contacto" class="py-6">
+      <h2 class='text-3xl font-semibold mb-10 flex gap-x-2 items-center text-mint-900 dark:text-mint-50'>
+        <ContactIcon class='size-7 text-mint-600 dark:text-mint-300' />
         Contacto
       </h2>
       <Contact />
     </SectionContainer>
   </main>
+  <ValentineEasterEgg />
 </Layout>

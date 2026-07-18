@@ -2,27 +2,39 @@
 import ExperienceItem from './ExperienceItem.astro';
 const EXPERIENCE = [
   {
+    title: 'The Palace Company - Desarrollador Backend.',
+    description:
+      'Desarrollador Backend en el equipo de Payments: integro pasarelas de pago como Adyen, Worldpay y Azul, y doy mantenimiento a nuestras implementaciones, cubriendo todo el ciclo de vida del pago —procesamiento, pagos recurrentes y programados, tokenización de tarjetas, reembolsos y contracargos— además de publicar eventos a Kafka y SQS para la contabilización en Opera y CRS, con Serverless Framework, TypeScript, PostgreSQL y AWS.',
+    date: 'Abril 2026 - Actualmente',
+  },
+  {
+    title: 'Freelance - Desarrollador de Software.',
+    description:
+      'Desarrollo de software independiente para distintos clientes, con proyectos web y móviles a la medida, incluyendo el sistema de procuración de fondos del Seminario Conciliar de México.',
+    date: 'Junio 2025 - Abril 2026',
+  },
+  {
     title: 'Capgemini Engineering - Software Engineer.',
     description:
-      'Me desempeño como Software Engineer desarrollando aplicaciones tanto en frontend como en backend, así también, diseño de bases de datos, testing y migración de los aplicativos de PCF a GCP (Google Cloud Platform). Esto para el sector automotriz, prestando servicios a la empresa Ford México.',
-    date: 'Julio 2021 - Actualmente',
+      'Software Engineer full stack, desarrollando frontend, backend, diseño de bases de datos y testing. Asignado como cliente a Ford México, en el sector automotriz, lideré la migración de los aplicativos de PCF a GCP (Google Cloud Platform).',
+    date: 'Julio 2021 - Junio 2025',
   },
   {
     title: 'Bonsai Software - Software Developer.',
     description:
-      'Egresado comencé un pequeño emprendimiento llamado Bonsai Software en el cual me desempeñe como Desarrollador de Software y Consultor de Software ofreciendo software hecho a la medida, así como páginas web y aplicaciones móviles.',
+      'Fundador y Desarrollador/Consultor de Software en Bonsai Software, ofreciendo desarrollo a la medida, sitios web y aplicaciones móviles.',
     date: 'Septiembre 2020 - Junio 2021',
   },
   {
     title: 'Lobo Software - Desarrolador Full-Stack.',
     description:
-      'Me desempeñé como programador full-stack en el desarrollo de un sistema ERP (SIAL) así como en el desarrollo de una librería hecha en Java llamada SIAL Util, además de refacotizar código obsoleto mejorando el rendimiento del sistema ERP antes mencionado.',
-    date: 'Julio 2019 - Abril 2010',
+      'Desarrollador full-stack del sistema ERP SIAL y de SIAL Util, una librería en Java, refactorizando código obsoleto para mejorar el rendimiento del ERP.',
+    date: 'Julio 2019 - Abril 2020',
   },
 ];
 ---
 
-<ol class='relative border-s border-gray-200 dark:border-gray-700 ml-3.5 -z-10'>
+<ol class='relative border-s border-mint-600/20 dark:border-mint-300/20 ml-3.5 -z-10'>
   <li class='mb-10 ms-6'>
     {EXPERIENCE.map((e) => <ExperienceItem {...e} />)}
   </li>

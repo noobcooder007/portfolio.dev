@@ -1,8 +1,10 @@
 ---
 import AstroIcon from './icons/AstroJS.astro';
-import AndroidIcon from './icons/Android.astro';
 import TailwindIcon from './icons/TailwindCSS.astro';
 import TypeScriptIcon from './icons/TypeScript.astro';
+import AngularIcon from './icons/Angular.astro';
+import NodeJSIcon from './icons/NodeJS.astro';
+import PostgreSQLIcon from './icons/PostgreSQL.astro';
 const TAGS = {
   ASTRO: {
     name: 'Astro',
@@ -19,58 +21,102 @@ const TAGS = {
     class: 'text-[#4476c0]',
     icon: TypeScriptIcon,
   },
-  ANDROID: {
-    name: 'Android',
-    class: 'text-[#78C257]',
-    icon: AndroidIcon
-  }
+  ANGULAR: {
+    name: 'Angular',
+    class: 'text-[#DD0031]',
+    icon: AngularIcon,
+  },
+  NODEJS: {
+    name: 'Node.js',
+    class: 'text-[#5FA04E]',
+    icon: NodeJSIcon,
+  },
+  POSTGRESQL: {
+    name: 'PostgreSQL',
+    class: 'text-[#336791]',
+    icon: PostgreSQLIcon,
+  },
 };
 
 const PROJECTS = [
   {
-    title: 'Portfolio personal',
+    title: 'Sistema de Procuración de Fondos - Seminario Conciliar de México',
     description:
-      'Nuevo y renovado portfolio personal contruido con el framework de Astro estilizado con tailwind CSS y el poder de Typescript.',
-    link: '#',
-    github: 'https://github.com/noobcooder007/portfolio.dev',
-    image: './proyects/proyect1.webp',
-    tags: [TAGS.ASTRO, TAGS.TAILWIND, TAGS.TYPESCRIPT],
+      'Plataforma interna para el Seminario Conciliar de México, próxima a entregarse. Gestiona colectores, bienhechores y promesas de donación, con asignaciones, generación e impresión de recibos, control de periodos, comisiones, liquidaciones y reportes.',
+    link: null,
+    github: null,
+    private: true,
+    image: null,
+    tags: [TAGS.ANGULAR, TAGS.NODEJS, TAGS.POSTGRESQL],
   },
   {
-    title: 'Ice Bonsai',
+    title: 'Portfolio personal',
     description:
-      'Aplicación para llevar un registro de las ventas de helado contruido con el framework de Jetpack Compose y el poder de Kotlin.',
-    link: '#',
-    github: 'https://github.com/noobcooder007/IceBonsai',
-    image: './proyects/proyect2.webp',
-    tags: [TAGS.ANDROID],
+      'Portfolio personal construido con Astro, estilizado con Tailwind CSS y TypeScript.',
+    link: 'https://noobcooder007.github.io/portfolio.dev/',
+    github: 'https://github.com/noobcooder007/portfolio.dev',
+    private: false,
+    image: './proyects/proyect1.webp',
+    tags: [TAGS.ASTRO, TAGS.TAILWIND, TAGS.TYPESCRIPT],
   },
 ];
 ---
 
-{
-  PROJECTS.map(({ image, title, description, github, tags }) => (
-    <article class="mb-8">
-      <h3 class='text-2xl font-semibold text-yellow-200 mb-2'>{title}</h3>
-      <p class='text-lg mb-4 text-pretty'>{description}</p>
-      <p class="mb-2"><a target="_blank" href={github}>Repositorio de GitHub</a></p>
-      <ul class='flex gap-x-2 flex-row pb-4'>
-        {tags.map((tag) => (
-          <li>
-            <span
-              class={`flex gap-x-2 rounded-full text-xs ${tag.class} bg-white/10 py-1 px-2`}
-            >
-              <tag.icon class='size-4' />
-              {tag.name}
+<div class='grid gap-6'>
+  {
+    PROJECTS.map(({ image, title, description, link, github, private: isPrivate, tags }) => (
+      <article class='rounded-2xl border border-black/10 dark:border-white/10 bg-white/40 dark:bg-white/5 backdrop-blur-md shadow-glass p-5 md:p-6'>
+        <div class='flex items-start justify-between gap-x-4 mb-2'>
+          <h3 class='text-2xl font-semibold text-mint-700 dark:text-mint-200 text-pretty'>{title}</h3>
+          {isPrivate && (
+            <span class='shrink-0 rounded-full border border-mint-600/30 dark:border-mint-300/30 bg-mint-500/10 dark:bg-mint-400/10 text-mint-800 dark:text-mint-100 text-xs px-2.5 py-1'>
+              Proyecto privado
             </span>
-          </li>
-        ))}
-      </ul>
-      <img
-        class='rounded shadow-2xl shadow-white/10'
-        src={image}
-        alt='home page'
-      />
-    </article>
-  ))
-}
+          )}
+        </div>
+        <p class='text-lg mb-4 text-pretty text-mint-900/85 dark:text-mint-50/85'>{description}</p>
+        {github && (
+          <p class='mb-2'>
+            <a
+              class='text-mint-700 dark:text-mint-200 hover:underline'
+              target='_blank'
+              href={github}
+            >
+              Repositorio de GitHub
+            </a>
+          </p>
+        )}
+        {link && (
+          <p class='mb-2'>
+            <a class='text-mint-700 dark:text-mint-200 hover:underline' target='_blank' href={link}>
+              Ver sitio
+            </a>
+          </p>
+        )}
+        <ul class='flex gap-x-2 flex-row flex-wrap pb-4'>
+          {tags.map((tag) => (
+            <li>
+              <span
+                class={`flex gap-x-2 rounded-full text-xs ${tag.class} border border-mint-600/15 dark:border-mint-300/15 bg-mint-500/10 dark:bg-mint-400/10 backdrop-blur-sm py-1 px-2`}
+              >
+                <tag.icon class='size-4' />
+                {tag.name}
+              </span>
+            </li>
+          ))}
+        </ul>
+        {image ? (
+          <img
+            class='rounded-xl border border-black/10 dark:border-white/10 shadow-glass'
+            src={image}
+            alt='home page'
+          />
+        ) : (
+          <div class='rounded-xl border border-mint-600/15 dark:border-mint-300/15 bg-gradient-to-br from-mint-500/15 via-mint-400/5 to-transparent h-48 flex items-center justify-center text-mint-800/50 dark:text-mint-100/50 text-sm'>
+            Vista previa próximamente
+          </div>
+        )}
+      </article>
+    ))
+  }
+</div>

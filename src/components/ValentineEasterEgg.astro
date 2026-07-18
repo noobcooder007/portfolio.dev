@@ -1,0 +1,18 @@
+<div id='valentine-easter-egg' class='hidden fixed bottom-5 right-5 z-50'>
+  <a
+    href={`${import.meta.env.BASE_URL}valentine`}
+    class='flex items-center gap-2 rounded-full border border-rose-400/30 bg-rose-400/20 backdrop-blur-xl text-mint-900 dark:text-mint-50 px-4 py-3 shadow-glass hover:scale-110 hover:bg-rose-400/30 transition-all animate-bounce font-medium'
+  >
+    <span>Tienes un mensaje</span> 💌
+  </a>
+</div>
+
+<script>
+  function checkValentine() {
+    const now = new Date();
+    if (now.getMonth() === 1 && now.getDate() === 14) {
+      document.getElementById('valentine-easter-egg')?.classList.remove('hidden');
+    }
+  }
+  checkValentine();
+</script>

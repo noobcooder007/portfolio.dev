@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+    <rect class="favicon-bg" width="64" height="64" rx="16" fill="#0a120e" />
+    <text x="32" y="45" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="700" font-size="34" fill="#9fdfba">n</text>
+    <style>
+        @media (prefers-color-scheme: light) {
+            .favicon-bg { fill: #e0f7e9; }
+            text { fill: #234936; }
+        }
+    </style>
+</svg>

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /valentine
+
+Sitemap: https://noobcooder007.github.io/portfolio.dev/sitemap.xml
