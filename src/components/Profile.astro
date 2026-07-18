@@ -2,7 +2,7 @@
 import SocialPill from './SocialPill.astro';
 import GitHubIcon from './icons/GitHubIcon.astro';
 import LinkedInIcon from './icons/LindkedIn.astro';
-import MailIcon from './icons/Mail.astro';
+import GmailIcon from './icons/Gmail.astro';
 ---
 
 <h2 class='lg:text-xl text-2xl text-mint-900/80 dark:text-mint-50/80 text-wrap max-w-[700px]'>
@@ -15,17 +15,27 @@ import MailIcon from './icons/Mail.astro';
 </h2>
 <nav class='flex gap-4 mt-8 flex-wrap'>
   <SocialPill
+    iconOnly
+    title='LinkedIn'
+    aria-label='LinkedIn'
     href='https://www.linkedin.com/in/juan-manuel-tejeda-torres-946b46180/'
   >
-    <LinkedInIcon class='size-4 md:size-6' />
-    LinkedIn
+    <LinkedInIcon class='size-5 md:size-6' />
   </SocialPill>
-  <SocialPill href='https://github.com/noobcooder007'>
-    <GitHubIcon class='size-4 md:size-6' />
-    GitHub
+  <SocialPill
+    iconOnly
+    title='GitHub'
+    aria-label='GitHub'
+    href='https://github.com/noobcooder007'
+  >
+    <GitHubIcon class='size-5 md:size-6' />
   </SocialPill>
-  <SocialPill href='mailto:tejeda.torres.1a@gmail.com'>
-    <MailIcon class='size-4 md:size-6' />
-    tejeda.torres.1a@gmail.com
+  <SocialPill
+    iconOnly
+    title='tejeda.torres.1a@gmail.com'
+    aria-label='tejeda.torres.1a@gmail.com'
+    href='mailto:tejeda.torres.1a@gmail.com'
+  >
+    <GmailIcon class='size-5 md:size-6' />
   </SocialPill>
 </nav>
